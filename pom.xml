@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.thebusybiscuit</groupId>
   <artifactId>ExtraGear</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   
   <properties>
   	<maven.compiler.source>1.8</maven.compiler.source>
@@ -58,7 +58,7 @@
   	<dependency>
   		<groupId>com.github.TheBusyBiscuit</groupId>
   		<artifactId>Slimefun4</artifactId>
-  		<version>e3d84de7b9</version>
+  		<version>RC-14</version>
   		<scope>provided</scope>
   	</dependency>
   </dependencies>

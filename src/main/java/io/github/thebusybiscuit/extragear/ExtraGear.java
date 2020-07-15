@@ -35,13 +35,13 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
         Config cfg = new Config(this);
 
         if (cfg.getBoolean("options.auto-update")) {
-            new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/ExtraGear/master").start();
+            new GitHubBuildsUpdater(this, getFile(), "DeathlyPanda/ExtraGearX/master").start();
         }
 
         new Metrics(this, 6469);
 
         category = new Category(new NamespacedKey(this, "items"), new CustomItem(Material.DIAMOND_SWORD, "&6ExtraGear"), 1);
-        categor2 = new Category(new NamespacedKey(this, "items"), new CustomItem(Material.DIAMOND_PICKAXE, "&6ExtraTools"), 1);
+        /**categor2 = new Category(new NamespacedKey(this, "items"), new CustomItem(Material.DIAMOND_PICKAXE, "&6ExtraTools"), 1);**/
 
         SlimefunItemStack itemStack = new SlimefunItemStack("REINFORCED_DIAMOND", Material.DIAMOND, "&aReinforced Diamond", "", "&7The One to Rule them All");
 
@@ -194,19 +194,20 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
         registerSword(Material.IRON_SWORD, "COBALT", SlimefunItems.COBALT_INGOT, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 7), new Pair<>(Enchantment.DURABILITY, 7)), 5);
         registerArmor(ArmorSet.IRON, "COBALT", SlimefunItems.COBALT_INGOT, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 7), new Pair<>(Enchantment.DURABILITY, 7)), 5);
 
-        registerSpade(Material.DIAMOND_AXE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED,9), new Pair<>(Enchantment.DURABILITY, 9)), 25);
+        /**registerSpade(Material.DIAMOND_AXE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED,9), new Pair<>(Enchantment.DURABILITY, 9)), 25);
         registerHoe(Material.DIAMOND_HOE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 9), new Pair<>(Enchantment.DURABILITY, 9)), 25);
-        registerPick(Material.DIAMOND_PICKAXE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 9), new Pair<>(Enchantment.DURABILITY, 9)), 25);
+        registerPick(Material.DIAMOND_PICKAXE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 9), new Pair<>(Enchantment.DURABILITY, 9)), 25);**/
     }
 
-    private void registerHoe(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
+    /**private void registerHoe(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
         SlimefunItemStack is = new SlimefunItemStack(component + "_HOE", type, "&f" + ChatUtils.humanize(component) + " HOE");
 
         for (Pair<Enchantment, Integer> enchantment : enchantments) {
             is.addUnsafeEnchantment(enchantment.getFirstValue(), enchantment.getSecondValue());
         }
 
-        SlimefunItem slimefunItem = new SlimefunItem(categor2, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { item, item, null, null, new ItemStack(Material.STICK), null, null, new ItemStack(Material.STICK), null });
+        SlimefunItem slimefunItem = new SlimefunItem(categor2, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{item, item, null, null, new ItemStack(Material.STICK), null, null, new ItemStack(Material.STICK), null}) {
+        };
         slimefunItem.register(this);
 
         delId++;
@@ -248,7 +249,7 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
         Research research = new Research(new NamespacedKey(this, component.toLowerCase() + "_pickaxe"), researchId, ChatUtils.humanize(component) + " Pickaxe", cost);
         research.addItems(slimefunItem);
         research.register();
-    }
+    }**/
 
     private void registerSword(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
         SlimefunItemStack is = new SlimefunItemStack(component + "_SWORD", type, "&f" + ChatUtils.humanize(component) + " Sword");
@@ -257,7 +258,8 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
             is.addUnsafeEnchantment(enchantment.getFirstValue(), enchantment.getSecondValue());
         }
 
-        SlimefunItem slimefunItem = new SlimefunItem(category, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { null, item, null, null, item, null, null, new ItemStack(Material.STICK), null });
+        SlimefunItem slimefunItem = new SlimefunItem(category, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{null, item, null, null, item, null, null, new ItemStack(Material.STICK), null}) {
+        };
         slimefunItem.register(this);
 
         researchId++;
