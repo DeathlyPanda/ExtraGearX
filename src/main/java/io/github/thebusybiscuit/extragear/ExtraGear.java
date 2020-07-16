@@ -325,7 +325,7 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public String getBugTrackerURL() {
-        return "https://github.com/TheBusyBiscuit/ExtraGear/issues";
+        return "https://github.com/DeathlyPanda/ExtraGearX/issues";
     }
 
 }
