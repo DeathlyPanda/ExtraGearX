@@ -3,6 +3,7 @@ package io.github.thebusybiscuit.extragear;
 import java.util.Arrays;
 import java.util.List;
 
+import io.github.thebusybiscuit.slimefun4.core.researching.Research;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -12,9 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
@@ -41,7 +41,6 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
         new Metrics(this, 6469);
 
         category = new Category(new NamespacedKey(this, "items"), new CustomItem(Material.DIAMOND_SWORD, "&6ExtraGear"), 1);
-        /**categor2 = new Category(new NamespacedKey(this, "items"), new CustomItem(Material.DIAMOND_PICKAXE, "&6ExtraTools"), 1);**/
 
         SlimefunItemStack itemStack = new SlimefunItemStack("REINFORCED_DIAMOND", Material.DIAMOND, "&aReinforced Diamond", "", "&7The One to Rule them All");
 
@@ -193,63 +192,7 @@ public class ExtraGear extends JavaPlugin implements SlimefunAddon {
         registerAxe(Material.IRON_AXE, "COBALT", SlimefunItems.COBALT_INGOT, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 7), new Pair<>(Enchantment.DURABILITY, 7)), 5);
         registerSword(Material.IRON_SWORD, "COBALT", SlimefunItems.COBALT_INGOT, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 7), new Pair<>(Enchantment.DURABILITY, 7)), 5);
         registerArmor(ArmorSet.IRON, "COBALT", SlimefunItems.COBALT_INGOT, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 7), new Pair<>(Enchantment.DURABILITY, 7)), 5);
-
-        /**registerSpade(Material.DIAMOND_AXE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED,9), new Pair<>(Enchantment.DURABILITY, 9)), 25);
-        registerHoe(Material.DIAMOND_HOE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 9), new Pair<>(Enchantment.DURABILITY, 9)), 25);
-        registerPick(Material.DIAMOND_PICKAXE, "REINFORCED_DIAMOND", itemStack, Arrays.asList(new Pair<>(Enchantment.DIG_SPEED, 9), new Pair<>(Enchantment.DURABILITY, 9)), 25);**/
     }
-
-    /**private void registerHoe(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
-        SlimefunItemStack is = new SlimefunItemStack(component + "_HOE", type, "&f" + ChatUtils.humanize(component) + " HOE");
-
-        for (Pair<Enchantment, Integer> enchantment : enchantments) {
-            is.addUnsafeEnchantment(enchantment.getFirstValue(), enchantment.getSecondValue());
-        }
-
-        SlimefunItem slimefunItem = new SlimefunItem(categor2, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{item, item, null, null, new ItemStack(Material.STICK), null, null, new ItemStack(Material.STICK), null}) {
-        };
-        slimefunItem.register(this);
-
-        delId++;
-
-        Research research = new Research(new NamespacedKey(this, component.toLowerCase() + "_hoe"), researchId, ChatUtils.humanize(component) + " Hoe", cost);
-        research.addItems(slimefunItem);
-        research.register();
-    }
-
-    private void registerSpade(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
-        SlimefunItemStack is = new SlimefunItemStack(component + "_SPADE", type, "&f" + ChatUtils.humanize(component) + " SPADE");
-
-        for (Pair<Enchantment, Integer> enchantment : enchantments) {
-            is.addUnsafeEnchantment(enchantment.getFirstValue(), enchantment.getSecondValue());
-        }
-
-        SlimefunItem slimefunItem = new SlimefunItem(categor2, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { null, item, null, item, new ItemStack(Material.STICK), null, null, new ItemStack(Material.STICK), null });
-        slimefunItem.register(this);
-
-        delId++;
-
-        Research research = new Research(new NamespacedKey(this, component.toLowerCase() + "_spade"), researchId, ChatUtils.humanize(component) + " Spade", cost);
-        research.addItems(slimefunItem);
-        research.register();
-    }
-
-    private void registerPick(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
-        SlimefunItemStack is = new SlimefunItemStack(component + "_PICKAXE", type, "&f" + ChatUtils.humanize(component) + " PICKAXE");
-
-        for (Pair<Enchantment, Integer> enchantment : enchantments) {
-            is.addUnsafeEnchantment(enchantment.getFirstValue(), enchantment.getSecondValue());
-        }
-
-        SlimefunItem slimefunItem = new SlimefunItem(categor2, is, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { item, item, item, null, new ItemStack(Material.STICK), null, null, new ItemStack(Material.STICK), null });
-        slimefunItem.register(this);
-
-        delId++;
-
-        Research research = new Research(new NamespacedKey(this, component.toLowerCase() + "_pickaxe"), researchId, ChatUtils.humanize(component) + " Pickaxe", cost);
-        research.addItems(slimefunItem);
-        research.register();
-    }**/
 
     private void registerSword(Material type, String component, ItemStack item, List<Pair<Enchantment, Integer>> enchantments, Integer cost) {
         SlimefunItemStack is = new SlimefunItemStack(component + "_SWORD", type, "&f" + ChatUtils.humanize(component) + " Sword");
