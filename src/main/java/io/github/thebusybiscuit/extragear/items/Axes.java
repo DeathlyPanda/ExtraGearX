@@ -1,4 +1,4 @@
-package io.github.thebusybiscuit.extragear;
+package io.github.thebusybiscuit.extragear.items;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.NotPlaceable;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
